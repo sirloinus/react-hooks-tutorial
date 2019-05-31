@@ -26,6 +26,7 @@ const App = () => {
       <h1 onClick={()=> ref.current.classList.add('hey-there')} >
         Yo yo yo yoy yyoyoyo
       </h1>
+      <Toggle/>
 
       <form onSubmit={(e) => {
         e.preventDefault();
@@ -49,7 +50,6 @@ const App = () => {
 
       <h2>{name}</h2>
 
-      <Toggle/>
     </div>
   );
 };

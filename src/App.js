@@ -1,4 +1,5 @@
 import React, { useRef, useMemo, useState, useEffect } from 'react';
+import { useSpring, animated } from 'react-spring'
 import Toggle from './Toggle';
 import { useTitleInput } from './hooks/useTitleInput'
 import Counter from './Counter'
@@ -11,8 +12,8 @@ const App = () => {
 
   const fetchDishes = async () => {
     const response = await fetch('https://my-json-server.typicode.com/leveluptuts/fakeapi/dishes')
-    const data = await response.json()
-    setDishes(data)
+    const dishes = await response.json()
+    setDishes(dishes)
   }
 
   useEffect(() => {
@@ -20,12 +21,14 @@ const App = () => {
   }, [])
   // adding second parameter of empty array ensures that the useEffect function is only called once (like componentDidMount) instead of after every update
   
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } })
+
   return (
     <div className="main-wrapper" ref={ref}>
       
-      <h1 onClick={()=> ref.current.classList.add('hey-there')} >
+      <animated.h1 onClick={()=> ref.current.classList.add('hey-there')} style={props}>
         Yo yo yo yoy yyoyoyo
-      </h1>
+      </animated.h1>
       <Toggle/>
 
       <form onSubmit={(e) => {

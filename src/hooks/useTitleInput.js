@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 function useTitleInput(initialValue) {
-    const [value, setValue] = useState(initialValue);
-  
-    useEffect(() => {
-      document.title = value;
-    });
-  
-    return [value, setValue];
-  }
+  const [value, setValue] = useState(initialValue);
 
-export {useTitleInput} 
+  useEffect(() => {
+    document.title = value;
+  });
+
+  return [value, setValue];
+}
+
+export { useTitleInput };
